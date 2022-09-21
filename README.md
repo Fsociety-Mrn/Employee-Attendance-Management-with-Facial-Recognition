@@ -28,14 +28,29 @@ pip install -r requirements.txt
 
 ## Arduino IDE setup
 
-on your arduino IDE
+#### on your arduino IDE
 
-#### go to preferences copy and paste this link
+go to preferences copy and paste this link
 ```shell
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json 
 ```
-#### on Additional Boards Manager URLs
+on Additional Boards Manager URLs
 
+#### go to Tools/Boards Managers and search this
+```shell
+esp32
+```
+after that 
+
+#### go to Sketch/Include Library/Add .ZIP Library
+locate the "esp32cam-main.zip" inside the cognate-I folder
+
+## Setup Esp32 Cam
+using arduino IDE locate open WifiCam.ino
+
+#### on your arduino IDE change the board into AI Thinker ESP32-CAM
+go to Tool/Board/ESP32 Arduino and locate the "AI Thinker ESP32-CAM"
+#### on your 
 
 
 
