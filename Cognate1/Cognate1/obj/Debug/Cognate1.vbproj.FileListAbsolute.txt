@@ -1,0 +1,11 @@
+C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\bin\Debug\Cognate1.exe.config
+C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\bin\Debug\Cognate1.exe
+C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\bin\Debug\Cognate1.pdb
+C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\bin\Debug\Cognate1.xml
+C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\obj\Debug\Cognate1.vbprojResolveAssemblyReference.cache
+C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\obj\Debug\Cognate1.Form1.resources
+C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\obj\Debug\Cognate1.Resources.resources
+C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\obj\Debug\Cognate1.vbproj.GenerateResource.Cache
+C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\obj\Debug\Cognate1.exe
+C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\obj\Debug\Cognate1.xml
+C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\obj\Debug\Cognate1.pdb
