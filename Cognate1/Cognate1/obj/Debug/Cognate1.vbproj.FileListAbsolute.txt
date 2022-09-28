@@ -9,3 +9,25 @@ C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\obj\Debug\Cognate1.vbproj.Genera
 C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\obj\Debug\Cognate1.exe
 C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\obj\Debug\Cognate1.xml
 C:\Users\Hello Friend\Desktop\Cognate1\Cognate1\obj\Debug\Cognate1.pdb
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\Cognate1.exe.config
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.exe
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.xml
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.pdb
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\Cognate1.exe
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\Cognate1.pdb
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\Cognate1.xml
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\MySql.Data.dll
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\Google.Protobuf.dll
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\ZstdNet.dll
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\BouncyCastle.Crypto.dll
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\Ubiety.Dns.Core.dll
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\System.Buffers.dll
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\K4os.Compression.LZ4.dll
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\K4os.Hash.xxHash.dll
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\bin\Debug\MySql.Data.xml
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.vbprojResolveAssemblyReference.cache
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.vbproj.Cognate1.exe.config
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.Form1.resources
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.Resources.resources
+D:\Art Lisboa files\Python\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.vbproj.GenerateResource.Cache
