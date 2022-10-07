@@ -1,4 +1,5 @@
 # import required modules
+from pickle import FALSE
 import mysql.connector
 from datetime import datetime
 
@@ -11,6 +12,7 @@ database="cognate1"
 
 # conection of databse
 data = mysql.connector.connect(host=host, user=user, password=password,database=database)
+
 cursor = data.cursor()
         
 # show all tables
@@ -30,10 +32,12 @@ def __listOfTables():
 # create table
 def createTable():
     try:
+        data._open_connection()
         cursor.execute("CREATE TABLE `" + 
         str(datetime.today().strftime('%Y-%m-%d')) + 
         "` (Name VARCHAR(255) PRIMARY KEY, Time VARCHAR(255));")
         print("New table created")
+        data.close()
         return True
     except mysql.connector.Error as Err:
         print(Err)
@@ -55,12 +59,13 @@ def __update(Name, Time):
 
 def addRow(Name):
     try:
-
+        data._open_connection()
         cursor.execute("INSERT INTO `" +
             str(datetime.today().strftime('%Y-%m-%d')) + 
             "` (`Name`, `Time`) VALUES ('" + Name + "','" + str(datetime.now().strftime('%I:%M %p')) + "')")
         data.commit()
         print("Success insert")
+        data.close()
         return False
   
     except mysql.connector.Error as Err:
@@ -91,3 +96,38 @@ def __deleteTable(tableName):
 # print(datetime.now().strftime('%I:%M %p'))
 
 # addupdateRow("Lisboa,Artmillen C")
+
+# create table mano mano
+def __createTassble():
+    try:
+        cursor.execute("CREATE TABLE `MASTERLIST` (ID VARCHAR(200) PRIMARY KEY, Name VARCHAR(255));")
+        print("New table created")
+        return True
+    except mysql.connector.Error as Err:
+        print(Err)
+        return False
+
+# SELECT specific row and column MASTERLISt
+
+def selectTable(ID):
+    try:
+        data._open_connection()
+        cursor.execute("SELECT `Name` FROM `masterlist` WHERE ID=" + ID + ";")
+        
+        print(cursor.fetchone()[0])
+        data.close()
+        return 1
+    except Exception as Err:
+        # print(Err)
+        return 0
+
+
+    
+    # print(str(SerialCommunication.SerialRead()))
+# mycursor.execute("SELECT passwd FROM users WHERE name = '%s'", (user_name))
+# row = mycursor.fetchone()
+
+# user_passwd = row[0]
+
+# print(selectTable("3"))
+

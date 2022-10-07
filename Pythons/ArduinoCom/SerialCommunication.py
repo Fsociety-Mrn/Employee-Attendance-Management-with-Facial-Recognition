@@ -14,6 +14,11 @@ def SerialWrite(i):
     #the Arduino waits for this and can seperate the numbers 
     Arduino.write(b'\n')
 
+def SerialRead():
+    Arduino.flush()
+    return Arduino.read_until().decode().strip()
 
-    
-    #the Arduino waits for this and can seperate the numbers 
+# while True:
+#     print(SerialRead())
+
+

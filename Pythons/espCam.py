@@ -59,6 +59,10 @@ def main() :
     print("Done Initializing webCam....") 
     
     while True:
+        asd = database.selectTable(SerialCommunication.SerialRead())
+        SerialCommunication.SerialWrite(asd)
+        print(asd)
+        
         img_resp=urllib.request.urlopen(url)
         imgnp=np.array(bytearray(img_resp.read()),dtype=np.uint8)
         img=cv2.imdecode(imgnp,-1)
@@ -90,9 +94,6 @@ def main() :
             else:
                 rectangleImages(faceLoc,frame,"No found images",255,0,0)
                 SerialCommunication.SerialWrite(0)
-            SerialCommunication.SerialWrite(0)
-
- 
         
         cv2.imshow('Attendance check',frame)
         

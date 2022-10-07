@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import face_recognition
 import os
-from ArduinoCom import SerialCommunication 
+from ArduinoCom import SerialCommunication
 from Database import database
 
 # global list for Name of images
@@ -52,6 +52,9 @@ def main() :
     print("Done Initializing webCam....") 
     
     while True:
+        asd = database.selectTable(SerialCommunication.SerialRead())
+        SerialCommunication.SerialWrite(asd)
+        print(asd)
         success, img = cap.read()
         frame = cv2.flip(img, 1) # Flip camera vertically
         imgS = cv2.resize(frame,(0,0),None,0.25,0.25)
@@ -76,15 +79,12 @@ def main() :
                 name = className[matchIndex]
                 
                 rectangleImages(faceLoc,frame,name,0,255,0)
-                database.addRow(name)
                 SerialCommunication.SerialWrite(1)
+                database.addRow(name)
+                
             else:
                 rectangleImages(faceLoc,frame,"No found images",255,0,0)
                 SerialCommunication.SerialWrite(0)
-                
-            SerialCommunication.SerialWrite(0)
-
- 
         
         cv2.imshow('Attendance check',frame)
         
