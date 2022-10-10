@@ -104,5 +104,6 @@ def main() :
         
     cap.release()
     cv2.destroyAllWindows
+    import Mainmenu
     
 main()

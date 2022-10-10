@@ -1,5 +1,5 @@
 # import required modules
-from pickle import FALSE
+from pickle import FALSE, TRUE
 import mysql.connector
 from datetime import datetime
 
@@ -100,7 +100,7 @@ def __deleteTable(tableName):
 # create table mano mano
 def __createTassble():
     try:
-        cursor.execute("CREATE TABLE `MASTERLIST` (ID VARCHAR(200) PRIMARY KEY, Name VARCHAR(255));")
+        cursor.execute("CREATE TABLE `MASTERLIST` (`ID` INT NOT AUTO_INCREMENT, PRIMARY KEY, username VARCHAR(255), password VARCHAR(255));")
         print("New table created")
         return True
     except mysql.connector.Error as Err:
@@ -108,7 +108,6 @@ def __createTassble():
         return False
 
 # SELECT specific row and column MASTERLISt
-
 def selectTable(ID):
     try:
         data._open_connection()
@@ -121,13 +120,24 @@ def selectTable(ID):
         # print(Err)
         return 0
 
-
+# login details
+def login(usrname,psswrd):
+    try:
+        data._open_connection()
+        cursor.execute("SELECT `ID` FROM admin WHERE username='"+ usrname +"' AND password='" + psswrd +"';")
+        
+        print(cursor.fetchone()[0])
+        data.close()
+        return True
+    except Exception as Err:
+        print(Err)
+        return False
     
-    # print(str(SerialCommunication.SerialRead()))
+# print(str(SerialCommunication.SerialRead()))
 # mycursor.execute("SELECT passwd FROM users WHERE name = '%s'", (user_name))
 # row = mycursor.fetchone()
 
 # user_passwd = row[0]
 
 # print(selectTable("3"))
-
+# print(login("admin","admin123"))

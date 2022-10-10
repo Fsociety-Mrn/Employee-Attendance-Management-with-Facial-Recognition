@@ -3,8 +3,10 @@ import cv2
 import numpy as np
 import face_recognition
 import os
+
 from ArduinoCom import SerialCommunication
 from Database import database
+
 
 # global list for Name of images
 className = [] 
@@ -91,9 +93,11 @@ def main() :
         k = cv2.waitKey(30) & 0xff
         if k == 27: # press 'ESC' to quit
             break
+            
         cv2.waitKey(1)
         
     cap.release()
     cv2.destroyAllWindows
+    import Mainmenu
     
 main()
