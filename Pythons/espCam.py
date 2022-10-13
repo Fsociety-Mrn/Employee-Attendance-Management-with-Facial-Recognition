@@ -4,7 +4,7 @@ import numpy as np
 import face_recognition
 import os
 import urllib.request
-import numpy as np
+
 
 from ArduinoCom import SerialCommunication 
 from Database import database
@@ -46,7 +46,7 @@ def rectangleImages(faceLoc, img, name, r,g,b):
     cv2.rectangle(img,(x1,y1),(x2,y2),(b,g,r),2)
     cv2.putText(img,name,(x1,y2+30),cv2.FONT_HERSHEY_COMPLEX,1,(b,g,r),1)
 
-def main() :
+def main():
     
     database.createTable()    
     
@@ -104,6 +104,5 @@ def main() :
         
     cap.release()
     cv2.destroyAllWindows
-    import Mainmenu
-    
-main()
+
+main()    

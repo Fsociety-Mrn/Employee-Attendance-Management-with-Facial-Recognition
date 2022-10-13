@@ -132,6 +132,18 @@ def login(usrname,psswrd):
     except Exception as Err:
         print(Err)
         return False
+
+def insert(ID,Name):
+    try:
+        data._open_connection()
+        cursor.execute("INSERT INTO `masterlist` (ID,Name) VALUES ('" + ID + "','"+ Name+"');")
+        data.commit()
+        print("Success insert")
+        data.close()
+        return 1
+    except Exception as Err:
+        print(Err)
+        return 0
     
 # print(str(SerialCommunication.SerialRead()))
 # mycursor.execute("SELECT passwd FROM users WHERE name = '%s'", (user_name))
@@ -141,3 +153,4 @@ def login(usrname,psswrd):
 
 # print(selectTable("3"))
 # print(login("admin","admin123"))
+# insert("23233","ASDDASDASD")

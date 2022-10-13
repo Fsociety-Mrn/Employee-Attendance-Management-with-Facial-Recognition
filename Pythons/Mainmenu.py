@@ -1,6 +1,6 @@
 import tkinter
 import customtkinter
-
+import espCam
 
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
@@ -12,7 +12,7 @@ app.title("Attendance Face Recognition")
 
 def openCamera():
     app.destroy()
-    import webCam
+    espCam.main()
     
 def register():
     app.destroy()
