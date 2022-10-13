@@ -31,17 +31,25 @@
 // Instance of the class MFRC522
 MFRC522 rfid(SS_PIN, RST_PIN);
 
+//i2c lcd
+LiquidCrystal_I2C lcd(0x27,20,4); 
+
 void setup() {
 
   Serial.begin(9600);
 
   SPI.begin(); // Init SPI bus
   rfid.PCD_Init(); // Init MFRC522
-  
+
+  lcd.init(); 
+  lcd.backlight(); 
+
   pinMode(GREEN_LED,OUTPUT); 
   pinMode(RED_LED,OUTPUT);
   pinMode(LOCKED,OUTPUT);
-  
+
+  lcd.clear();
+  lcd.print("RFID Entry");
   digitalWrite(GREEN_LED,LOW);
   digitalWrite(RED_LED,HIGH);  
 }
@@ -52,6 +60,7 @@ int Number;
 void loop() {
   // put your main code here, to run repeatedly:
      RFID();
+
   while (Serial.available()>0) {
  
     int incomingByte = 0;
@@ -59,13 +68,20 @@ void loop() {
     Number = b.toInt();
 
     if (Number == 1){
+      lcd.clear();
+      lcd.print("access granted");
       digitalWrite(LOCKED,HIGH);
       digitalWrite(GREEN_LED,HIGH);
       digitalWrite(RED_LED,LOW);
       
       delay(2000);
+      lcd.clear();
+      lcd.print("RFID Entry");
       break;
     }else{
+      lcd.clear();
+      lcd.print("access denied");
+      
       digitalWrite(LOCKED,LOW);
       digitalWrite(GREEN_LED,LOW);
       digitalWrite(RED_LED,HIGH);
@@ -94,15 +110,22 @@ void RFID() {
 
     RFID_SERIALNUMBER += String(rfid.uid.uidByte[i]);
   }
+//9716117039
 
-  if(RFID_SERIALNUMBER=="115137192151"){
+  if(RFID_SERIALNUMBER=="115137192151" || RFID_SERIALNUMBER=="9716117039"){
     digitalWrite(LOCKED,HIGH);
     digitalWrite(GREEN_LED,HIGH);
     digitalWrite(RED_LED,LOW);
+    
+    lcd.clear();
+    lcd.print("access granted");
     delay(2000);
     digitalWrite(LOCKED,LOW);
     digitalWrite(GREEN_LED,LOW);
     digitalWrite(RED_LED,HIGH);
+
+    lcd.clear();
+    lcd.print("RFIF ENRTY");
     return;
   }else{
     Serial.flush();
