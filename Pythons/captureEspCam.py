@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import urllib.request
 
-url='http://192.168.100.61/1600x1200.jpg' # esp url
+url='http://192.168.43.154/1600x1200.jpg' # esp url
 
 import cv2
 

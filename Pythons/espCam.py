@@ -14,7 +14,7 @@ from Database import database
 className = [] 
 
 
-url='http://192.168.100.61/640x480.jpg' # esp url
+url='http://192.168.43.154/640x480.jpg' # esp url
 
 # Get images from Imgs folder
 def getImages():
