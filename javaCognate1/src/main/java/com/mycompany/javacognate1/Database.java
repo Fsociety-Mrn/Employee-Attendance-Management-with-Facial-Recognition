@@ -1,4 +1,4 @@
-package cognate1java.cognate1java;
+package com.mycompany.javacognate1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

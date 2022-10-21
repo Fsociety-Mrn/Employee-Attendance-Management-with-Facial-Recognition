@@ -1,4 +1,4 @@
-package cognate1java.cognate1java;
+package com.mycompany.javacognate1;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -37,7 +37,6 @@ public class main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -106,9 +105,11 @@ public class main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new main().setVisible(true);
             }

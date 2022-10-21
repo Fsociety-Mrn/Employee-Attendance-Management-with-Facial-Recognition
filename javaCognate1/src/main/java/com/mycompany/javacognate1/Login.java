@@ -2,14 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package cognate1java.cognate1java;
+package com.mycompany.javacognate1;
 
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Hello Friend
+ * @author User-PC
  */
 public class Login extends javax.swing.JFrame {
 
@@ -36,9 +35,6 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(400, 300));
-        setName(""); // NOI18N
-        setSize(new java.awt.Dimension(400, 300));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -83,8 +79,8 @@ public class Login extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "BOBO");
         }
-//System.out.println();
-//        database.showRows();
+        //System.out.println();
+        //        database.showRows();
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
