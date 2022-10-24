@@ -108,5 +108,25 @@ public class Database {
             return null;
         }
     }
+//    SHOW ALL MASTELIST
+        public ArrayList<String> showRowsMaster(){
+        try{
+            
+            ArrayList<String> tableNames = new ArrayList<String>();
+            
+            String query = "SELECT * FROM `masterlist`";
+            ResultSet result = getConnected().executeQuery(query);
+            
+            while(result.next()){
+                  tableNames.add(result.getString("ID"));
+                  tableNames.add(result.getString("Name"));
+            }            
+            conn.close();
+            return tableNames;        
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
   
 }

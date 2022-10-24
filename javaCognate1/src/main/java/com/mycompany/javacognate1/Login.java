@@ -4,6 +4,8 @@
  */
 package com.mycompany.javacognate1;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +19,9 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+//        center jframe
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
     /**
@@ -30,29 +35,37 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         username = new javax.swing.JTextField();
-        password = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(41, 41, 41));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(41, 41, 41));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        username.setBackground(new java.awt.Color(204, 204, 204));
         username.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         username.setText("Username");
         username.setBorder(null);
+        username.setDisabledTextColor(new java.awt.Color(153, 153, 153));
+        username.setSelectionColor(new java.awt.Color(153, 153, 153));
+        username.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usernameMouseClicked(evt);
+            }
+        });
+        username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameKeyPressed(evt);
+            }
+        });
         jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 290, 36));
 
-        password.setBackground(new java.awt.Color(204, 204, 204));
-        password.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        password.setText("Password");
-        password.setBorder(null);
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 290, 36));
-
-        loginButton.setBackground(new java.awt.Color(204, 204, 204));
+        loginButton.setBackground(new java.awt.Color(234, 234, 234));
+        loginButton.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         loginButton.setText("Login");
         loginButton.setBorder(null);
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -62,9 +75,29 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 220, 30));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Attendance Monitoring System");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 400, -1));
+
+        password.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        password.setText("Password");
+        password.setBorder(null);
+        password.setSelectionColor(new java.awt.Color(153, 153, 153));
+        password.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                passwordMouseClicked(evt);
+            }
+        });
+        password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordKeyPressed(evt);
+            }
+        });
+        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 290, 36));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
@@ -73,15 +106,40 @@ public class Login extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         Database database = new Database();
+        
         if (database.login("admin", username.getText(),password.getText())){
             this.setVisible(false);
             new main().setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null, "BOBO");
+            JOptionPane.showMessageDialog(new Login(), "incorrect username and password");
         }
         //System.out.println();
         //        database.showRows();
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyPressed
+        if (username.getText().equals("Username")){
+            username.setText("");
+        }
+    }//GEN-LAST:event_usernameKeyPressed
+
+    private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
+        if (password.getText().equals("Password")){
+            password.setText("");
+        }
+    }//GEN-LAST:event_passwordKeyPressed
+
+    private void usernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameMouseClicked
+        if (password.getText().equals("")){
+            password.setText("Password");
+        }
+    }//GEN-LAST:event_usernameMouseClicked
+
+    private void passwordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordMouseClicked
+        if (username.getText().equals("")){
+            username.setText("Username");
+        }
+    }//GEN-LAST:event_passwordMouseClicked
 
     /**
      * @param args the command line arguments
@@ -122,7 +180,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginButton;
-    private javax.swing.JTextField password;
+    private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }

@@ -98,6 +98,6 @@ def main() :
         
     cap.release()
     cv2.destroyAllWindows
-    import Mainmenu
+    # import Mainmenu
     
 main()
