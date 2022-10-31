@@ -6,8 +6,10 @@ import java.awt.Toolkit;
 import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -18,18 +20,18 @@ public class main extends javax.swing.JFrame {
     public main() {
         initComponents(); 
         try{
-            //        center jframe
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-            new Database().showTables().forEach(item->jComboBox1.addItem(item));
+        //center jframe
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+            
+            dataBase.showTables(jComboBox1);
             
             attendancePanel.setVisible(true);
             masterList.setVisible(false);
             
             
-            DefaultTableModel models = (DefaultTableModel) jTable2.getModel();
-            models.setRowCount(0);
-            models.addRow(new Database().showRowsMaster().toArray());
+            dataBase.showRowsMaster(jTable2);
+            
         }catch(Exception ex){
             System.out.println(ex);
         }
@@ -42,6 +44,7 @@ public class main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         attendance = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -52,6 +55,8 @@ public class main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         print = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
+        refresh = new javax.swing.JButton();
         masterList = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -150,7 +155,31 @@ public class main extends javax.swing.JFrame {
                 printActionPerformed(evt);
             }
         });
-        attendancePanel.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 200, 31));
+        attendancePanel.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 200, 31));
+
+        delete.setBackground(new java.awt.Color(153, 0, 0));
+        delete.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        delete.setForeground(new java.awt.Color(255, 255, 255));
+        delete.setText("Delete");
+        delete.setBorder(null);
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
+        attendancePanel.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 200, 31));
+
+        refresh.setBackground(new java.awt.Color(102, 102, 102));
+        refresh.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        refresh.setForeground(new java.awt.Color(255, 255, 255));
+        refresh.setText("Refresh");
+        refresh.setBorder(null);
+        refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshActionPerformed(evt);
+            }
+        });
+        attendancePanel.add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 200, 31));
 
         getContentPane().add(attendancePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 840, 440));
 
@@ -198,9 +227,7 @@ public class main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
-        model.addRow(new Database().showRows(jComboBox1.getSelectedItem().toString()).toArray());
+        dataBase.showRows(jComboBox1.getSelectedItem().toString(), jTable1);
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -210,9 +237,7 @@ public class main extends javax.swing.JFrame {
         attendancePanel.setVisible(true);
         masterList.setVisible(false);
         
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
-        model.addRow(new Database().showRows(jComboBox1.getSelectedItem().toString()).toArray());
+        dataBase.showRows(jComboBox1.getSelectedItem().toString(), jTable1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -220,10 +245,8 @@ public class main extends javax.swing.JFrame {
         attendance.setBackground(new java.awt.Color(41, 41, 41));
         attendancePanel.setVisible(false);
         masterList.setVisible(true);
-        
-        DefaultTableModel models = (DefaultTableModel) jTable2.getModel();
-        models.setRowCount(0);
-        models.addRow(new Database().showRowsMaster().toArray());
+       
+        dataBase.showRowsMaster(jTable2);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
@@ -241,6 +264,37 @@ public class main extends javax.swing.JFrame {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_print1ActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        int column = 0;
+        int row = jTable1.getSelectedRow();
+        
+        if (row >= 0){
+//            int result = JOptionPane.showConfirmDialog(null,"Once you delete this it cannot be undone,\n"
+//                    + "Are you sure you want to delete this?", 
+//                    "Attendance Face Recognition",
+//                 JOptionPane.YES_NO_OPTION,
+//                 JOptionPane.QUESTION_MESSAGE);
+//            
+//            if (result == JOptionPane.YES_OPTION){
+//                String password = JOptionPane.showInputDialog(null, result, title, result, icon, selectionValues, DISPOSE_ON_CLOSE);
+//			//(null, "Please enter your password", "Input", JOptionPane.QUESTION_MESSAGE );
+//            }
+            String value = jTable1.getModel().getValueAt(row, column).toString();
+            dataBase.deleteAttendance(jComboBox1.getSelectedItem().toString(), value);
+            
+            dataBase.showRows(jComboBox1.getSelectedItem().toString(), jTable1);
+        }else{
+            JOptionPane.showMessageDialog(new Login(), "Please click the row ");
+        }
+//        String value = jTable1.getModel().getValueAt(row, column).toString();
+//        System.out.println(value);
+//        dataBase.deleteAttendance();       
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
+        dataBase.showRows(jComboBox1.getSelectedItem().toString(), jTable1);
+    }//GEN-LAST:event_refreshActionPerformed
 
 
     private void openFile(String file){
@@ -263,6 +317,8 @@ public class main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel attendance;
     private javax.swing.JPanel attendancePanel;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton delete;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -275,5 +331,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JPanel masterlistPanel;
     private javax.swing.JButton print;
     private javax.swing.JButton print1;
+    private javax.swing.JButton refresh;
     // End of variables declaration//GEN-END:variables
 }

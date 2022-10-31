@@ -56,13 +56,13 @@ def main() :
     while True:
         asd = database.selectTable(SerialCommunication.SerialRead())
         SerialCommunication.SerialWrite(asd)
-        print(asd)
+        # print(asd)
         success, img = cap.read()
         frame = cv2.flip(img, 1) # Flip camera vertically
         imgS = cv2.resize(frame,(0,0),None,0.25,0.25)
         imgS = cv2.cvtColor(imgS, cv2.COLOR_BGR2RGB)
          
-        cv2.rectangle(frame, (200, 200), (200, 200), (0,255,0), 1)
+        cv2.rectangle(imgS, (200, 200), (200, 200), (0,255,0), 1)
         
         # encode the capture image in webcamp
         facesCurFrame = face_recognition.face_locations(imgS)

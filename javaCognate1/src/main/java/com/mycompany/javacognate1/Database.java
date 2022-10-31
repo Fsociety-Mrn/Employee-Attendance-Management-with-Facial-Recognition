@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Database {
     private Connection conn;
@@ -64,7 +67,7 @@ public class Database {
     }
  
 // SHOW OF ALL TABLES
-    public ArrayList<String> showTables(){
+    public void showTables(JComboBox jComboBox1){
         try{
             
             ArrayList<String> tableNames = new ArrayList<String>();
@@ -80,53 +83,70 @@ public class Database {
             
             conn.close();
             Collections.sort(tableNames, Collections.reverseOrder()); 
-            return tableNames;
+            
+            
+            jComboBox1.removeAllItems();
+            tableNames.forEach(item->jComboBox1.addItem(item));
+ 
             
         }catch(Exception e){
             System.out.println(e);
-            return null;
         }
     }
  
 // SHOW ALL ROWS IN SPECIFIC TABLES
-    public ArrayList<String> showRows(String date){
-        try{
+    public void showRows(String date,JTable table){
+            try{
             
-            ArrayList<String> tableNames = new ArrayList<String>();
-            
+            DefaultTableModel tblmodel = (DefaultTableModel)table.getModel();
+            tblmodel.setRowCount(0);
             String query = "SELECT * FROM `" + date + "`";
             ResultSet result = getConnected().executeQuery(query);
             
             while(result.next()){
-                  tableNames.add(result.getString("Name"));
-                  tableNames.add(result.getString("Time"));
+                String data[] = {result.getString("Name"),result.getString("Time")};
+                tblmodel.addRow(data);
             }            
-            conn.close();
-            return tableNames;        
+            conn.close();      
         }catch(Exception e){
             System.out.println(e);
-            return null;
-        }
+ 
+        } 
     }
 //    SHOW ALL MASTELIST
-        public ArrayList<String> showRowsMaster(){
+        public void showRowsMaster(JTable table){
         try{
             
-            ArrayList<String> tableNames = new ArrayList<String>();
+            DefaultTableModel tblmodel = (DefaultTableModel)table.getModel();
+            tblmodel.setRowCount(0);
             
             String query = "SELECT * FROM `masterlist`";
             ResultSet result = getConnected().executeQuery(query);
             
             while(result.next()){
-                  tableNames.add(result.getString("ID"));
-                  tableNames.add(result.getString("Name"));
+                String data[] = {result.getString("ID"),result.getString("Name")};
+                tblmodel.addRow(data);
             }            
-            conn.close();
-            return tableNames;        
+            conn.close();     
         }catch(Exception e){
             System.out.println(e);
-            return null;
         }
     }
+        
+//  delete Attendace      
+    public void deleteAttendance(String date, String Name){
+        
+          try{       
+            String query = "DELETE FROM `" + date + "` WHERE Name='" + Name + "'";       
+            System.out.println(getConnected().executeUpdate(query));
+            conn.close();
+   
+        }catch(Exception e){
+            System.out.println(e);
+
+        }
+        
+    }
+    
   
 }
