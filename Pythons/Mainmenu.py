@@ -1,6 +1,7 @@
 import tkinter
 import customtkinter
-import espCam
+import Test
+# import espCam
 
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
@@ -12,11 +13,12 @@ app.title("Attendance Face Recognition")
 
 def openCamera():
     app.destroy()
-    espCam.main()
+    import App
+    # espCam.main()
     
 def register():
     app.destroy()
-    import Register
+    # import Register
 
 frame_1 = customtkinter.CTkFrame(master=app)
 frame_1.pack(pady=15, padx=15, fill="both", expand=True)
@@ -46,3 +48,5 @@ register.pack(pady=12, padx=10)
 
 
 app.mainloop()
+
+del app
