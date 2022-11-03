@@ -4,11 +4,11 @@ from tkinter import messagebox
 from Database import database
 
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
-customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
+customtkinter.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
 
-app = customtkinter.CTk()
-app.geometry("400x250")
-app.title("")
+root = customtkinter.CTk()
+root.geometry("400x250")
+root.title("")
 
 
 def button_callback():
@@ -17,13 +17,13 @@ def button_callback():
     
     if database.login(username.get(),password.get()):
         messagebox.showinfo("Attendance Face Recognition","login was successful")
-        app.destroy()
+        root.destroy()
         import Mainmenu
     else:
         messagebox.showerror("Attendance Face Recognition","We apologize for the inconvenience; please enter the correct username and password.")
 
 
-frame_1 = customtkinter.CTkFrame(master=app)
+frame_1 = customtkinter.CTkFrame(master=root)
 frame_1.pack(pady=20, padx=20, fill="both", expand=True)
 
 title = customtkinter.CTkLabel(master=frame_1,
@@ -56,4 +56,6 @@ button_1.pack(pady=12, padx=10)
 
 
 
-app.mainloop()
+root.mainloop()
+
+del root
