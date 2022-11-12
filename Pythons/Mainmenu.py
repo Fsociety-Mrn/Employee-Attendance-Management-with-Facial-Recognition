@@ -7,46 +7,52 @@ import Test
 customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
-app = customtkinter.CTk()
-app.geometry("400x250")
-app.title("Attendance Face Recognition")
+class asd(customtkinter.CTk):
+    def __init__(self):
+        super().__init__()
 
-def openCamera():
-    app.destroy()
-    import App
-    # espCam.main()
-    
-def register():
-    app.destroy()
-    # import Register
+        self.geometry("400x250")
+        self.title("Attendance Face Recognition")
 
-frame_1 = customtkinter.CTkFrame(master=app)
-frame_1.pack(pady=15, padx=15, fill="both", expand=True)
+        self.frame_1 = customtkinter.CTkFrame(master=self)
+        self.frame_1.pack(pady=15, padx=15, fill="both", expand=True)
 
-title = customtkinter.CTkLabel(master=frame_1,
+        self.title = customtkinter.CTkLabel(master=self.frame_1,
                                  text="Please select the following from the main menu", 
                                  justify=tkinter.CENTER)
-title.pack(pady=12, padx=0)
+        self.title.pack(pady=12, padx=0)
 
-checkAttendance = customtkinter.CTkButton(master=frame_1, 
+        self.checkAttendance = customtkinter.CTkButton(master=self.frame_1, 
                                    text="Check Attendance",
                                    width=5000,
                                    height=50,
-                                   command=openCamera
+                                   command=self.openCamera
                                     )
-checkAttendance.pack(pady=12, padx=10)
+        self.checkAttendance.pack(pady=12, padx=10)
 
 
-register = customtkinter.CTkButton(master=frame_1, 
+        self.register = customtkinter.CTkButton(master=self.frame_1, 
                                    text="Register",
                                    width=5000,
                                     height=50,
-                                    command=register
+                                    command=self.register
                                     )
-register.pack(pady=12, padx=10)
+        self.register.pack(pady=12, padx=10)
 
 
 
-app.mainloop()
+    def openCamera(self):
+        self.destroy()
+        # import App
+        # espCam.main()
+    
+    def register(self):
+        self.destroy()
+        # import Register
 
-del app
+
+
+
+
+
+

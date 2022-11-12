@@ -35,3 +35,6 @@ def cam(name):
 
     cv2.destroyAllWindows()
     
+
+cam("TimeIn")
+    
