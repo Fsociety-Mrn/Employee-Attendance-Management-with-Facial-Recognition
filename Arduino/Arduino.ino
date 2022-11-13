@@ -35,7 +35,7 @@ MFRC522 rfid(SS_PIN, RST_PIN);
 LiquidCrystal_I2C lcd(0x27,20,4); 
 
 void setup() {
-
+  
   Serial.begin(9600);
 
   SPI.begin(); // Init SPI bus
@@ -68,17 +68,27 @@ void loop() {
     Number = b.toInt();
 
     if (Number == 1){
+
+      tone(6,440,800);
       lcd.clear();
       lcd.print("access granted");
       digitalWrite(LOCKED,HIGH);
       digitalWrite(GREEN_LED,HIGH);
       digitalWrite(RED_LED,LOW);
       
+      
       delay(2000);
       lcd.clear();
       lcd.print("RFID Entry");
+
+//      reset 
+      digitalWrite(LOCKED,LOW);
+      digitalWrite(GREEN_LED,LOW);
+      digitalWrite(RED_LED,HIGH);
       break;
     }else{
+      
+      tone(6,300,1000);
       lcd.clear();
       lcd.print("access denied");
       
@@ -116,7 +126,7 @@ void RFID() {
     digitalWrite(LOCKED,HIGH);
     digitalWrite(GREEN_LED,HIGH);
     digitalWrite(RED_LED,LOW);
-    
+    tone(6,440,500);
     lcd.clear();
     lcd.print("access granted");
     delay(2000);
@@ -128,6 +138,7 @@ void RFID() {
     lcd.print("RFIF ENRTY");
     return;
   }else{
+    tone(6,400,200);
     Serial.flush();
     Serial.println(RFID_SERIALNUMBER);
   }

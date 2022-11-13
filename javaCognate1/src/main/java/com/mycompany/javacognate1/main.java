@@ -6,12 +6,10 @@ import java.awt.Toolkit;
 import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-import javax.swing.table.DefaultTableModel;
 
 
 public class main extends javax.swing.JFrame {

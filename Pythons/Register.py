@@ -31,7 +31,7 @@ def check():
 def openWebCam():
     if check():
         name = str(LastName.get()) + "," + str(firstName.get()) + " " + str(middleInitial.get())
-        captureEspCam.cam(name.upper())
+        captureWebCam.cam(name.upper())
     else:
         messagebox.showerror("Attendance Face Recognition","Please input the empty field")
 

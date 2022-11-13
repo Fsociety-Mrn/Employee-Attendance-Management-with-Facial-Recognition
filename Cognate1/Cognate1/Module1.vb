@@ -7,9 +7,6 @@ Module Module1
     Public data As New DataSet
 
 
-
-
-
     Sub openCon()
         Dim localhost As String = "localhost"
         Dim username As String = "root"

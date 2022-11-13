@@ -46,7 +46,8 @@ def main() :
     database.createTable()
     
     print("Wait the images to encode....")
-    encodedImages = findEncoding()
+    
+    encodedImages = findEncoding() # ========================= encoding images
 
     print("Images successful encoded...")
     print("Initializing webCam....")

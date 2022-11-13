@@ -3,7 +3,6 @@ from pickle import FALSE, TRUE
 import mysql.connector
 from datetime import datetime
 
-
 host="localhost"
 user="root"
 password=""
@@ -35,21 +34,20 @@ def createTable():
         data._open_connection()
         cursor.execute("CREATE TABLE `" + 
         str(datetime.today().strftime('%Y-%m-%d')) + 
-        "` (Name VARCHAR(255) PRIMARY KEY, Time VARCHAR(255));")
+        "` (Name VARCHAR(255) PRIMARY KEY, TimeIn VARCHAR(255), TimeOut VARCHAR(255));")
         print("New table created")
         data.close()
         return True
     except mysql.connector.Error as Err:
-        print(Err)
         return False
      
 
-def __update(Name, Time):
+def updateRow(Name):
     try:
 
         cursor.execute("UPDATE `"+
             str(datetime.today().strftime('%Y-%m-%d')) +
-        	"` SET `Time` = '" + Time + "' WHERE Name = '" + Name + "'")
+        	"` SET `TimeOut` = '" + str(datetime.now().strftime('%I:%M %p')) + "' WHERE Name = '" + Name + "'")
         data.commit()
         print("Success updated")
         return cursor.rowcount
@@ -62,7 +60,7 @@ def addRow(Name):
         data._open_connection()
         cursor.execute("INSERT INTO `" +
             str(datetime.today().strftime('%Y-%m-%d')) + 
-            "` (`Name`, `Time`) VALUES ('" + Name + "','" + str(datetime.now().strftime('%I:%M %p')) + "')")
+            "` (`Name`, `TimeIn`) VALUES ('" + Name + "','" + str(datetime.now().strftime('%I:%M %p')) + "')")
         data.commit()
         print("Success insert")
         data.close()
@@ -74,8 +72,8 @@ def addRow(Name):
         
 def __addupdateRow(Name):
     try:
-        if __addRow(Name,str(datetime.now().strftime('%I:%M %p'))):
-            __update(Name, str(datetime.now().strftime('%I:%M %p')))       
+        if addRow(Name,str(datetime.now().strftime('%I:%M %p'))):
+            updateRow(Name, str(datetime.now().strftime('%I:%M %p')))       
     except Exception as e: 
         print(e)
 
@@ -154,3 +152,4 @@ def insert(ID,Name):
 # print(selectTable("3"))
 # print(login("admin","admin123"))
 # insert("23233","ASDDASDASD")
+
