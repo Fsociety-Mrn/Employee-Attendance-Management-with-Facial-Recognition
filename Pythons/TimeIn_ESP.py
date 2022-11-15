@@ -8,7 +8,7 @@ import face_recognition
 import os
 import Database.database as DB # database
 import ArduinoCom.SerialCommunication as SC # Serial Communication
-
+from tkinter import messagebox
 
 face_detector=cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 #  http://192.168.43.154
@@ -23,6 +23,8 @@ class TimeIn(customtkinter.CTk):
 
     def __init__(self):
         super().__init__()
+        
+
         
         self.title("Time In")
         self.resizable(False, False)
@@ -76,7 +78,7 @@ class TimeIn(customtkinter.CTk):
         self.selfie.pack(pady=10, padx=10)
         self.selfie.place(relx=.5,rely=.6,anchor='center')
         
-         # capture camera
+        # capture camera
         # self.goback  = customtkinter.CTkButton(master=self.captureButton, 
         #                            text="back to mainmenu",
         #                            command=self.quit)
@@ -84,6 +86,9 @@ class TimeIn(customtkinter.CTk):
         # self.goback.place(relx=.5,rely=.8,anchor='center')
 
         # self.camera.configure(image=)
+        
+        self.camera()
+        
     def asd(self):
         self.root.destroy()
     # ========================== code for video streaming
@@ -109,6 +114,9 @@ class TimeIn(customtkinter.CTk):
         
         for (x, y, w, h) in faces:
             cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            faces = img[y:y + h, x:x + w]
+            cv2.imshow("face",faces)
+            cv2.imwrite('imgs/face.jpg', faces)
             
         img = Image.fromarray(frame)
         
@@ -144,7 +152,7 @@ class TimeIn(customtkinter.CTk):
         
         
         if not facesCurFrame:
-            self.label.configure(text="I can't recognize yoy, may you please position ypur face properly on the camera")
+            messagebox.showerror('error', "I can't recognize you, may you please position your face properly on the camera")
             print(facesCurFrame)
             SC.SerialWrite(0)
         # compare images
@@ -160,23 +168,22 @@ class TimeIn(customtkinter.CTk):
                 # get the name
                 name = self.className[matchIndex]
                 
-                # set Text
-                self.label.configure(text="Hello have a great day! " + name + " :)")
-                
+
                 # Serial write to true
                 SC.SerialWrite(1)
                 
+                 # set Text
+                messagebox.showinfo('information', "Hello have a great day! " + name + " :)")
+                
                 # add to database
                 DB.addRow(name) 
-                
-                
-                print()
+
                 break
             else:
-                self.label.configure(text="Im sorry but i dont recognize you")
                 
                 # Serial write to true
                 SC.SerialWrite(0)
+                messagebox.showerror('error', "Im sorry but i dont recognize you")
                 
                 break
  
@@ -217,7 +224,6 @@ class TimeIn(customtkinter.CTk):
 
 if __name__ == "__main__":
     app = TimeIn()
-    app.camera()
     app.mainloop()
 
 # TimeIn().camera()

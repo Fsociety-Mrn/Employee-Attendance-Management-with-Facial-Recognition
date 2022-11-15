@@ -18,7 +18,7 @@ def button_callback():
     if database.login(username.get(),password.get()):
         messagebox.showinfo("Attendance Face Recognition","login was successful")
         root.destroy()
-        import Mainmenu
+        import InANDOut
     else:
         messagebox.showerror("Attendance Face Recognition","We apologize for the inconvenience; please enter the correct username and password.")
 
