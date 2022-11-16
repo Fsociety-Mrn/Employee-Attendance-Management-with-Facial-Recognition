@@ -1,7 +1,7 @@
 import tkinter 
 import customtkinter
 import captureEspCam
-import captureWebCam
+
 
 from tkinter import messagebox
 from ArduinoCom import SerialCommunication 
@@ -31,7 +31,7 @@ def check():
 def openWebCam():
     if check():
         name = str(LastName.get()) + "," + str(firstName.get()) + " " + str(middleInitial.get())
-        captureWebCam.cam(name.upper())
+        captureEspCam.cam(name.upper())
     else:
         messagebox.showerror("Attendance Face Recognition","Please input the empty field")
 
