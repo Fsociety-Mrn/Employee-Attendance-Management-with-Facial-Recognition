@@ -114,9 +114,9 @@ class TimeIn(customtkinter.CTk):
         
         for (x, y, w, h) in faces:
             cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-            faces = img[y:y + h, x:x + w]
-            cv2.imshow("face",faces)
-            cv2.imwrite('imgs/face.jpg', faces)
+            # faces = img[y:y + h, x:x + w]
+            # cv2.imshow("face",faces)
+            # cv2.imwrite('imgs/face.jpg', faces)
             
         img = Image.fromarray(frame)
         
