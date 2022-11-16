@@ -68,6 +68,7 @@ def addRow(Name):
   
     except mysql.connector.Error as Err:
         # print(Err)
+        updateRow(Name)
         return True
         
 def __addupdateRow(Name):
