@@ -28,7 +28,7 @@ class TimeIn(customtkinter.CTk):
         self.title("Employee Face Recognition")
         #self.resizable(False, False)
         # =================== Center Form =================== #
-        window_height = 500
+        window_height = 600
         window_width = 1050
 
         screen_width = self.winfo_screenwidth()
@@ -49,7 +49,7 @@ class TimeIn(customtkinter.CTk):
         self.grid_rowconfigure(1, weight=1)
         
         # =================== Camera Streaming =================== #
-        self.cameraFrame = customtkinter.CTkFrame(master=self.mainFrame,height=500 )
+        self.cameraFrame = customtkinter.CTkFrame(master=self.mainFrame,height=400 )
         self.cameraFrame.grid(row=0, column=0, sticky="nswe", padx=10, pady=10)
      
         # Camera
@@ -59,7 +59,7 @@ class TimeIn(customtkinter.CTk):
         self.cameras.place(relx=.5,rely=.5,anchor='center')
         
         # =================== click Button Field =================== #
-        self.captureButton = customtkinter.CTkFrame(master=self.mainFrame, width=1000,height=180 )
+        self.captureButton = customtkinter.CTkFrame(master=self.mainFrame, width=1000,height=130 )
         self.captureButton.grid(row=1, column=0, sticky="nswe", padx=10, pady=10)
         
         # Label
