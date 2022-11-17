@@ -7,7 +7,7 @@ import numpy as np
 import face_recognition
 import os
 import Database.database as DB # database
-# import ArduinoCom.SerialCommunication as SC # Serial Communication
+import ArduinoCom.SerialCommunication as SC # Serial Communication
 import threading
 from tkinter import messagebox
 
