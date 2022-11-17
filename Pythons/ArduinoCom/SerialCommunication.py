@@ -1,7 +1,7 @@
 import serial
 import time
 
-port = "COM5"
+port = "COM7"
 Arduino = serial.Serial(port ,9600, timeout=1)
 
 def SerialWrite(i):

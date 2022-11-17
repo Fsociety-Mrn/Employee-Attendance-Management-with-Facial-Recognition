@@ -13,7 +13,7 @@ from tkinter import messagebox
 
 face_detector=cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 #  http://192.168.100.61
-url='http://192.168.43.154/640x480.jpg' # esp url
+url='http://192.168.254.198/640x480.jpg' # esp url
 
 customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -26,7 +26,7 @@ class TimeIn(customtkinter.CTk):
         super().__init__()
         
         self.title("Employee Face Recognition")
-        self.resizable(False, False)
+        #self.resizable(False, False)
         # =================== Center Form =================== #
         window_height = 750
         window_width = 1050
