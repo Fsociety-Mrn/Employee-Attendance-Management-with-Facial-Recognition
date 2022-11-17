@@ -7,7 +7,7 @@ import numpy as np
 import face_recognition
 import os
 import Database.database as DB # database
-import ArduinoCom.SerialCommunication as SC # Serial Communication
+# import ArduinoCom.SerialCommunication as SC # Serial Communication
 import threading
 from tkinter import messagebox
 
@@ -28,7 +28,7 @@ class TimeIn(customtkinter.CTk):
         self.title("Employee Face Recognition")
         #self.resizable(False, False)
         # =================== Center Form =================== #
-        window_height = 750
+        window_height = 500
         window_width = 1050
 
         screen_width = self.winfo_screenwidth()
