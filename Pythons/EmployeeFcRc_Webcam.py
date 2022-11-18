@@ -9,6 +9,7 @@ import Database.database as DB # database
 import ArduinoCom.SerialCommunication as SC # Serial Communication
 import threading
 from tkinter import messagebox
+import time
 
 face_detector=cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
@@ -77,9 +78,6 @@ class TimeIn(customtkinter.CTk):
         
 
 
-        # self.camera.configure(image=)
-    def asd(self):
-        self.root.destroy()
     # ========================== code for video streaming
     def camera(self):
         
@@ -211,16 +209,16 @@ class TimeIn(customtkinter.CTk):
             SC.SerialWrite(b)
             print(DB.selectTable(a))
             messagebox.showinfo('information', 'Please come back asap takecare!') if b == 1 else messagebox.showerror('error', 'please do register!')
-            
+            time.sleep(1)
         return self.serialRead()   
 
 if __name__ == "__main__":
     app = TimeIn()
-    threading.Thread(target=app.serialRead, args=()).start()
     threading.Thread(target=app.camera, args=()).start()
+    threading.Thread(target=app.serialRead, args=()).start()
     app.mainloop()
 
-# TimeIn().camera()
+# TimeIn().serialRead()
     
 
 

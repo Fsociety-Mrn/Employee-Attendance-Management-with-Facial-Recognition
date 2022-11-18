@@ -15,7 +15,7 @@ data = mysql.connector.connect(host=host, user=user, password=password,database=
 cursor = data.cursor()
         
 # show all tables
-def __listOfTables():
+def __listOfTables(index):
 	cursor.execute("SHOW TABLES")
 	
 	listTableName= []
@@ -26,30 +26,38 @@ def __listOfTables():
 		removeParentL = removeApo.replace("(","")
 		removeParentR = removeParentL.replace(")","")
 		listTableName.append(removeParentR)
-	return listTableName
+    
+	return listTableName.count(index)
 
 # create table
 def createTable():
     try:
-        data._open_connection()
-        cursor.execute("CREATE TABLE `" + 
-        str(datetime.today().strftime('%Y-%m-%d')) + 
-        "` (Name VARCHAR(255) PRIMARY KEY, TimeIn VARCHAR(255), TimeOut VARCHAR(255));")
-        print("New table created")
-        data.close()
-        return True
+        
+        # check if table is exist
+        if __listOfTables(str(datetime.today().strftime('%Y-%m-%d'))) == 0:
+        
+            data._open_connection()
+            cursor.execute("CREATE TABLE `" + 
+            str(datetime.today().strftime('%Y-%m-%d')) + 
+            "` (Name VARCHAR(255) PRIMARY KEY, TimeIn VARCHAR(255), TimeOut VARCHAR(255));")
+            print("New table created")
+            data.close()
+            
+            return True
     except mysql.connector.Error as Err:
+        print(Err)
         return False
      
 
 def updateRow(Name):
     try:
-
+        data._open_connection()
         cursor.execute("UPDATE `"+
             str(datetime.today().strftime('%Y-%m-%d')) +
         	"` SET `TimeOut` = '" + str(datetime.now().strftime('%I:%M %p')) + "' WHERE Name = '" + Name + "'")
         data.commit()
         print("Success updated")
+        data.close()
         return cursor.rowcount
   
     except mysql.connector.Error as Err:
@@ -83,19 +91,6 @@ def __addupdateRow(Name):
 def __deleteTable(tableName):
     cursor.execute("DROP TABLE " + tableName + ";")
 
-  
-# print(listOfTables().index("cognate1"))
-# createTable() 
-
-# deleteTable("`2022-09-21`")
-# addRow("Lisboa,Artmillen C.", "20:200")
-
-
-# addRow("Lisboa,Artmillen C.", str(datetime.now().strftime('%I:%M %p')))
-# print(datetime.now().strftime('%I:%M %p'))
-
-# addupdateRow("Lisboa,Artmillen C")
-
 # create table mano mano
 def __createTassble():
     try:
@@ -113,20 +108,21 @@ def selectTable(ID):
         cursor.execute("SELECT `Name` FROM `masterlist` WHERE ID=" + ID + ";")
         
         print(cursor.fetchone()[0])
+        # cursor.execute("set session wait_timeout=300;")
         data.close()
         return 1
     except Exception as Err:
-        # print(Err)
+        data.close()
         return 0
 
 # login details
 def login(usrname,psswrd):
     try:
-        data._open_connection()
+        # data._open_connection()
         cursor.execute("SELECT `ID` FROM admin WHERE username='"+ usrname +"' AND password='" + psswrd +"';")
         
         print(cursor.fetchone()[0])
-        data.close()
+        # data.close()
         return True
     except Exception as Err:
         print(Err)
@@ -144,13 +140,4 @@ def insert(ID,Name):
         print(Err)
         return 0
     
-# print(str(SerialCommunication.SerialRead()))
-# mycursor.execute("SELECT passwd FROM users WHERE name = '%s'", (user_name))
-# row = mycursor.fetchone()
-
-# user_passwd = row[0]
-
-# print(selectTable("3"))
-# print(login("admin","admin123"))
-# insert("23233","ASDDASDASD")
 

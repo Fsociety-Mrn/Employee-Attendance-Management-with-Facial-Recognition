@@ -12,8 +12,9 @@ import threading
 from tkinter import messagebox
 
 face_detector=cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-#  http://192.168.100.61
-url='http://192.168.254.198/640x480.jpg' # esp url
+
+# url='http://192.168.254.198/640x480.jpg' # url ng hotspot mo rey
+url='http://192.168.100.61/1280x720.jpg' # url ng wifi ko
 
 customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -53,7 +54,7 @@ class TimeIn(customtkinter.CTk):
         self.cameraFrame.grid(row=0, column=0, sticky="nswe", padx=10, pady=10)
      
         # Camera
-        self.cameras = customtkinter.CTkLabel(master=self.cameraFrame,corner_radius=20)
+        self.cameras = customtkinter.CTkLabel(master=self.cameraFrame,corner_radius=20,text="Loading...")
         self.cameras.grid(row=0, column=0)
 
         self.cameras.place(relx=.5,rely=.5,anchor='center')
@@ -196,12 +197,13 @@ class TimeIn(customtkinter.CTk):
         capture = cv2.imread('TimeInOut/TimeInOut.png') # get capture images
         return capture
     
+    # ==========================  serial coms
     def serialRead(self):
         a = SC.SerialRead()
         if a:
             b = DB.selectTable(a)
             SC.SerialWrite(b)
-            print(DB.selectTable(a))
+            print(b)
             messagebox.showinfo('information', 'Please come back asap takecare!') if b == 1 else messagebox.showerror('error', 'please do register!')
         return self.serialRead()
 
