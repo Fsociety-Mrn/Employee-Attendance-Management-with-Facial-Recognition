@@ -33,8 +33,13 @@ class TimeIn(customtkinter.CTk):
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
 
-        x_cordinate = int((screen_width/2) - (window_width/2))
-        y_cordinate = int((screen_height/3) - (window_height/3))
+        # kapag sa screen ko
+        # x_cordinate = int((screen_width/2) - (window_width/2))
+        # y_cordinate = int((screen_height/3) - (window_height/3))
+
+        # kapag sa screen ni rey
+        x_cordinate = int((screen_width/4) - (window_width/4))
+        y_cordinate = int((screen_height/8) - (window_height/8))
         
         self.geometry("{}x{}+{}+{}".format(window_width, window_height, x_cordinate, y_cordinate))
         

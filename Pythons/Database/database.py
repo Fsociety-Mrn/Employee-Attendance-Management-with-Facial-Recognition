@@ -45,7 +45,7 @@ def createTable():
             
             return True
     except mysql.connector.Error as Err:
-        print(Err)
+        # print(Err)
         return False
      
 

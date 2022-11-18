@@ -14,7 +14,7 @@ from tkinter import messagebox
 face_detector=cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 # url='http://192.168.254.198/640x480.jpg' # url ng hotspot mo rey
-url='http://192.168.100.61/1280x720.jpg' # url ng wifi ko
+url='http://192.168.100.61/800x600.jpg' # url ng wifi ko
 
 customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -27,7 +27,7 @@ class TimeIn(customtkinter.CTk):
         super().__init__()
         
         self.title("Employee Face Recognition")
-        #self.resizable(False, False)
+        self.resizable(False, False)
         # =================== Center Form =================== #
         window_height = 600
         window_width = 1050
@@ -35,8 +35,13 @@ class TimeIn(customtkinter.CTk):
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
 
-        x_cordinate = int((screen_width/2) - (window_width/2))
-        y_cordinate = int((screen_height/3) - (window_height/3))
+        # kapag sa screen ko
+        # x_cordinate = int((screen_width/2) - (window_width/2))
+        # y_cordinate = int((screen_height/3) - (window_height/3))
+
+        # kapag sa screen ni rey
+        x_cordinate = int((screen_width/4) - (window_width/4))
+        y_cordinate = int((screen_height/8) - (window_height/8))
         
         self.geometry("{}x{}+{}+{}".format(window_width, window_height, x_cordinate, y_cordinate))
         
