@@ -1,4 +1,5 @@
-﻿Public Class login
+﻿Imports MySql.Data.MySqlClient
+Public Class login
     Private Sub Button2_Click(sender As Object, e As EventArgs)
         Me.Close()
 
@@ -9,6 +10,15 @@
         Dim password As String
         username = txtUser.Text
         password = txtPass.Text
+
+        Try
+
+        Catch ex As Exception
+
+        End Try
+
+
+
         If (username.Equals("admin") And password.Equals("admin")) Then
             MessageBox.Show("Login Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             dashboard.Show()
