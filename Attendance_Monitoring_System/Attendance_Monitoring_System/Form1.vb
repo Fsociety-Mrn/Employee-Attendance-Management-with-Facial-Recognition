@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports MySqlConnector
+
 Public Class login
     Private Sub Button2_Click(sender As Object, e As EventArgs)
         Me.Close()
@@ -11,32 +12,39 @@ Public Class login
         username = txtUser.Text
         password = txtPass.Text
 
+        Dim query As String = "SELECT `ID` FROM `admin` WHERE username='" +
+            username + "' AND password='" + password + "';"
+
         Try
+            openCon() ''open connection 
+
+            mysqlCommand.Connection = con
+            mysqlCommand.CommandText = query
+            mysqlAdapter.SelectCommand = mysqlCommand
+
+            data.Clear() ''dataset
+            mysqlAdapter.Fill(data)
+
+            Dim myread As MySqlDataReader = mysqlCommand.ExecuteReader
+
+            If myread.Read Then
+                MessageBox.Show("Login Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                dashboard.Show()
+                Me.Hide()
+
+            Else
+                MessageBox.Show("Please double-check your username and password.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+            con.Close()
 
         Catch ex As Exception
-
+            MessageBox.Show(ex.ToString)
         End Try
 
-
-
-        If (username.Equals("admin") And password.Equals("admin")) Then
-            MessageBox.Show("Login Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            dashboard.Show()
-            Me.Hide()
-
-
-        ElseIf (txtUser.Text = "admin" And txtPass.Text <> "admin") Then
-            MessageBox.Show("Only username is correct!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-        ElseIf (txtUser.Text <> "admin" And txtPass.Text = "admin") Then
-            MessageBox.Show("Only Password is correct!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Else
-            MessageBox.Show("Incorrect Username and Password", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End If
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Application.Exit()
-
     End Sub
 End Class

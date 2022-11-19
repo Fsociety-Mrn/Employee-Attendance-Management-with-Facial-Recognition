@@ -39,7 +39,7 @@ def createTable():
             data._open_connection()
             cursor.execute("CREATE TABLE `" + 
             str(datetime.today().strftime('%Y-%m-%d')) + 
-            "` (Name VARCHAR(255) PRIMARY KEY, TimeIn VARCHAR(255), TimeOut VARCHAR(255));")
+            "` (Name VARCHAR(255) PRIMARY KEY, TimeIn VARCHAR(255), TimeOut VARCHAR(255), Status VARCHAR(255));")
             print("New table created")
             data.close()
             
@@ -54,7 +54,8 @@ def updateRow(Name):
         data._open_connection()
         cursor.execute("UPDATE `"+
             str(datetime.today().strftime('%Y-%m-%d')) +
-        	"` SET `TimeOut` = '" + str(datetime.now().strftime('%I:%M %p')) + "' WHERE Name = '" + Name + "'")
+        	"` SET `TimeOut` = '" + str(datetime.now().strftime('%I:%M %p')) + 
+            "', `Status` = 'Time Out' WHERE Name = '" + Name + "'")
         data.commit()
         print("Success updated")
         data.close()
@@ -68,7 +69,7 @@ def addRow(Name):
         data._open_connection()
         cursor.execute("INSERT INTO `" +
             str(datetime.today().strftime('%Y-%m-%d')) + 
-            "` (`Name`, `TimeIn`) VALUES ('" + Name + "','" + str(datetime.now().strftime('%I:%M %p')) + "')")
+            "` (`Name`, `TimeIn`, `Status`) VALUES ('" + Name + "','" + str(datetime.now().strftime('%I:%M %p')) + "','Time In')")
         data.commit()
         print("Success insert")
         data.close()
@@ -141,3 +142,5 @@ def insert(ID,Name):
         return 0
     
 
+# createTable()
+addRow("test")
