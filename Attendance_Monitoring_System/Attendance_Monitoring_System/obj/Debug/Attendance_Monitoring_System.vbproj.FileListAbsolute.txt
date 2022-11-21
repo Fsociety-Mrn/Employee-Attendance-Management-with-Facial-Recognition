@@ -66,3 +66,7 @@ C:\Users\User-PC\Desktop\cognate-I\Attendance_Monitoring_System\Attendance_Monit
 C:\Users\User-PC\Desktop\cognate-I\Attendance_Monitoring_System\Attendance_Monitoring_System\obj\Debug\Attendance_Monitoring_System.exe
 C:\Users\User-PC\Desktop\cognate-I\Attendance_Monitoring_System\Attendance_Monitoring_System\obj\Debug\Attendance_Monitoring_System.xml
 C:\Users\User-PC\Desktop\cognate-I\Attendance_Monitoring_System\Attendance_Monitoring_System\obj\Debug\Attendance_Monitoring_System.pdb
+C:\Users\User-PC\Desktop\cognate-I\Attendance_Monitoring_System\Attendance_Monitoring_System\obj\Debug\Attendance_Monitoring_System.Form8.resources
+C:\Users\User-PC\Desktop\cognate-I\Attendance_Monitoring_System\Attendance_Monitoring_System\obj\Debug\Attendance_Monitoring_System.onTimeTodayDeleteForm.resources
+C:\Users\User-PC\Desktop\cognate-I\Attendance_Monitoring_System\Attendance_Monitoring_System\obj\Debug\Attendance_Monitoring_System.UpdateEmployee.resources
+C:\Users\User-PC\Desktop\cognate-I\Attendance_Monitoring_System\Attendance_Monitoring_System\obj\Debug\Attendance_Monitoring_System.DeleteEmployee.resources

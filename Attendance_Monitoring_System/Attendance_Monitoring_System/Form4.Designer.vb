@@ -23,16 +23,16 @@ Partial Class Monitoring
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.USERNAME = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TIME = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.STATUS = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ETAD = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -46,8 +46,22 @@ Partial Class Monitoring
         Me.Panel1.ForeColor = System.Drawing.Color.White
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(775, 64)
+        Me.Panel1.Size = New System.Drawing.Size(798, 64)
         Me.Panel1.TabIndex = 1
+        '
+        'Button3
+        '
+        Me.Button3.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button3.FlatAppearance.BorderSize = 0
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.ForeColor = System.Drawing.Color.Red
+        Me.Button3.Location = New System.Drawing.Point(736, 8)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(50, 50)
+        Me.Button3.TabIndex = 2
+        Me.Button3.Text = "X"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -63,7 +77,7 @@ Partial Class Monitoring
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 88)
+        Me.Label2.Location = New System.Drawing.Point(3, 141)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(131, 25)
         Me.Label2.TabIndex = 2
@@ -74,7 +88,7 @@ Partial Class Monitoring
         Me.Button1.BackColor = System.Drawing.Color.MidnightBlue
         Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(652, 80)
+        Me.Button1.Location = New System.Drawing.Point(672, 131)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(114, 48)
         Me.Button1.TabIndex = 4
@@ -84,70 +98,75 @@ Partial Class Monitoring
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.USERNAME, Me.TIME, Me.STATUS, Me.ETAD})
-        Me.DataGridView1.Location = New System.Drawing.Point(68, 134)
+        Me.DataGridView1.Location = New System.Drawing.Point(61, 195)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersWidth = 62
         Me.DataGridView1.RowTemplate.Height = 28
         Me.DataGridView1.Size = New System.Drawing.Size(664, 295)
         Me.DataGridView1.TabIndex = 5
         '
-        'USERNAME
-        '
-        Me.USERNAME.HeaderText = "USERNAME"
-        Me.USERNAME.MinimumWidth = 8
-        Me.USERNAME.Name = "USERNAME"
-        Me.USERNAME.Width = 150
-        '
-        'TIME
-        '
-        Me.TIME.HeaderText = "TIME"
-        Me.TIME.MinimumWidth = 8
-        Me.TIME.Name = "TIME"
-        Me.TIME.Width = 150
-        '
-        'STATUS
-        '
-        Me.STATUS.HeaderText = "STATUS"
-        Me.STATUS.MinimumWidth = 8
-        Me.STATUS.Name = "STATUS"
-        Me.STATUS.Width = 150
-        '
-        'ETAD
-        '
-        Me.ETAD.HeaderText = "DATE"
-        Me.ETAD.MinimumWidth = 8
-        Me.ETAD.Name = "ETAD"
-        Me.ETAD.Width = 150
-        '
         'ComboBox1
         '
+        Me.ComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.ComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(142, 87)
+        Me.ComboBox1.Location = New System.Drawing.Point(152, 138)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(503, 33)
         Me.ComboBox1.TabIndex = 6
         '
-        'Button3
+        'DateTimePicker1
         '
-        Me.Button3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.Red
-        Me.Button3.Location = New System.Drawing.Point(717, 9)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(50, 50)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "X"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.DateTimePicker1.Location = New System.Drawing.Point(506, 90)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(280, 26)
+        Me.DateTimePicker1.TabIndex = 7
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(221, 91)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(445, 25)
+        Me.Label3.TabIndex = 8
+        Me.Label3.Text = "wag mo idelete to pati datetimpeicker hahaha"
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.Maroon
+        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button2.ForeColor = System.Drawing.Color.White
+        Me.Button2.Location = New System.Drawing.Point(409, 496)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(235, 48)
+        Me.Button2.TabIndex = 9
+        Me.Button2.Text = "Delete"
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.Color.MidnightBlue
+        Me.Button4.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button4.ForeColor = System.Drawing.Color.White
+        Me.Button4.Location = New System.Drawing.Point(168, 496)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(235, 48)
+        Me.Button4.TabIndex = 10
+        Me.Button4.Text = "Refresh"
+        Me.Button4.UseVisualStyleBackColor = False
         '
         'Monitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(775, 450)
+        Me.ClientSize = New System.Drawing.Size(798, 554)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Button1)
@@ -169,10 +188,10 @@ Partial Class Monitoring
     Friend WithEvents Label2 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents USERNAME As DataGridViewTextBoxColumn
-    Friend WithEvents TIME As DataGridViewTextBoxColumn
-    Friend WithEvents STATUS As DataGridViewTextBoxColumn
-    Friend WithEvents ETAD As DataGridViewTextBoxColumn
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Button3 As Button
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button4 As Button
 End Class

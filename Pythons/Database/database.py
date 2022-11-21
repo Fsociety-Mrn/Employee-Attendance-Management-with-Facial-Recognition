@@ -142,5 +142,4 @@ def insert(ID,Name):
         return 0
     
 
-# createTable()
-addRow("test")
+# addRow("CHECK2")
