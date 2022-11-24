@@ -8,6 +8,7 @@ Arduino = serial.Serial(port ,9600, timeout=1)
 def SerialWrite(i):
     
 # while True:
+    Arduino.flush()
     time.sleep(1)
     b = "%s" %i
     Arduino.write(bytes(b, 'utf-8'))

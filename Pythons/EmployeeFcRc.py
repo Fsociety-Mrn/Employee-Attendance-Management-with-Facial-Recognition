@@ -70,7 +70,7 @@ class TimeIn(customtkinter.CTk):
         
         # Label
         self.label = customtkinter.CTkLabel(master=self.captureButton,
-                                 text="Please click the button to Time In")
+                                 text="Please click the button to capture")
         self.label.pack(pady=10, padx=10)
         self.label.place(relx=.5,rely=.5,anchor='s')
         
@@ -158,8 +158,8 @@ class TimeIn(customtkinter.CTk):
                 # Serial write to true
                 SC.SerialWrite(1)
                 
-                 # set Text
-                messagebox.showinfo('information', "Hello have a great day! " + name + " :)")
+                # set Text
+                # messagebox.showinfo('information', "Hello have a great day! " + name + " :)")
                 
                 # add to database
                 DB.addRow(name) 
@@ -205,7 +205,9 @@ class TimeIn(customtkinter.CTk):
     # ==========================  serial coms
     def serialRead(self):
         a = SC.SerialRead()
+        # print(a)
         if a:
+            # print(a)
             b = DB.selectTable(a)
             SC.SerialWrite(b)
             print(b)

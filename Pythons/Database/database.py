@@ -2,6 +2,7 @@
 from pickle import FALSE, TRUE
 import mysql.connector
 from datetime import datetime
+from tkinter import messagebox
 
 host="localhost"
 user="root"
@@ -58,6 +59,9 @@ def updateRow(Name):
             "', `Status` = 'Time Out' WHERE Name = '" + Name + "'")
         data.commit()
         print("Success updated")
+
+        messagebox.showinfo('information', "Time Out:  " + Name + " :)")
+
         data.close()
         return cursor.rowcount
   
@@ -72,6 +76,9 @@ def addRow(Name):
             "` (`Name`, `TimeIn`, `Status`) VALUES ('" + Name + "','" + str(datetime.now().strftime('%I:%M %p')) + "','Time In')")
         data.commit()
         print("Success insert")
+
+        messagebox.showinfo('information', "Time In: " + Name)
+
         data.close()
         return False
   
