@@ -20,9 +20,13 @@ customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard),
 cap = cv2.VideoCapture(0)
 
 class TimeIn(customtkinter.CTk):
+    
+    
 
     def __init__(self):
         super().__init__()
+        
+        self.errors = 0
         
         self.title("Time In")
         self.resizable(False, False)
@@ -59,7 +63,7 @@ class TimeIn(customtkinter.CTk):
         self.cameraFrame.grid(row=0, column=0, sticky="nswe", padx=10, pady=10)
      
         # Camera
-        self.cameras = customtkinter.CTkLabel(master=self.cameraFrame,corner_radius=20)
+        self.cameras = customtkinter.CTkLabel(master=self.cameraFrame,corner_radius=20,text="Loading...")
         self.cameras.grid(row=0, column=0)
 
         self.cameras.place(relx=.5,rely=.5,anchor='center')
@@ -138,6 +142,7 @@ class TimeIn(customtkinter.CTk):
         
         if not facesCurFrame:
             SC.SerialWrite(0)
+            self.errors +=1
             messagebox.showerror('error', "I can't recognize you, may you please position your face properly on the camera")
             
         # compare images
@@ -167,7 +172,7 @@ class TimeIn(customtkinter.CTk):
             else:
                 # Serial write to true
                 SC.SerialWrite(0)
-                
+                self.errors +=1
                 messagebox.showerror('error', "Im sorry but i dont recognize you")
                 
                 break
@@ -216,11 +221,27 @@ class TimeIn(customtkinter.CTk):
             messagebox.showinfo('information', 'Please come back asap takecare!') if b == 1 else messagebox.showerror('error', 'please do register!')
             time.sleep(1)
         return self.serialRead()   
+    
+    def errorstO(self):
+        print(str(self.errors))
+        if self.errors == 5:
+            self.label.configure(text="Unable to capture camera please wait 5 seconds")
+            self.selfie.configure(state="disabled")
+            time.sleep(5)
+            self.label.configure(text="Please click the button to Time In")
+            self.selfie.configure(state="enable")
+            self.errors = 0
+        else:
+            self.label.configure(text="Please click the button to Time In")
+            self.selfie.configure(state="enable")
+            
+        return self.errorstO()
 
 if __name__ == "__main__":
     app = TimeIn()
     threading.Thread(target=app.camera, args=()).start()
     threading.Thread(target=app.serialRead, args=()).start()
+    threading.Thread(target=app.errorstO, args=()).start()
     app.mainloop()
 
 # TimeIn().serialRead()

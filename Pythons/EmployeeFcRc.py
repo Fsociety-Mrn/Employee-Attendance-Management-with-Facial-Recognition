@@ -26,6 +26,8 @@ class TimeIn(customtkinter.CTk):
     def __init__(self):
         super().__init__()
         
+        self.errors = 0
+        
         self.title("Employee Face Recognition")
         self.resizable(False, False)
         # =================== Center Form =================== #
@@ -141,6 +143,7 @@ class TimeIn(customtkinter.CTk):
         
         if not facesCurFrame:
             SC.SerialWrite(0)
+            self.errors +=1
             messagebox.showerror('error', "I can't recognize you, may you please position your face properly on the camera")
             
         # compare images
@@ -167,6 +170,7 @@ class TimeIn(customtkinter.CTk):
             else:
                 # Serial write to true
                 SC.SerialWrite(0)
+                self.errors +=1
                 messagebox.showerror('error', "Im sorry but i dont recognize you")
                 break
 
@@ -213,12 +217,29 @@ class TimeIn(customtkinter.CTk):
             print(b)
             messagebox.showinfo('information', 'Please come back asap takecare!') if b == 1 else messagebox.showerror('error', 'please do register!')
         return self.serialRead()
+    
+    # ========================== errors
+    def errorstO(self):
+        print(str(self.errors))
+        if self.errors == 5:
+            self.label.configure(text="Unable to capture camera please wait 5 seconds")
+            self.selfie.configure(state="disabled")
+            time.sleep(5)
+            self.label.configure(text="Please click the button to Time In")
+            self.selfie.configure(state="enable")
+            self.errors = 0
+        else:
+            self.label.configure(text="Please click the button to Time In")
+            self.selfie.configure(state="enable")
+            
+        return self.errorstO()    
 
 if __name__ == "__main__":
     app = TimeIn()
     
     threading.Thread(target=app.serialRead, args=()).start()
     threading.Thread(target=app.camera, args=()).start()
+    threading.Thread(target=app.errorstO, args=()).start()
     app.mainloop()
 
     
