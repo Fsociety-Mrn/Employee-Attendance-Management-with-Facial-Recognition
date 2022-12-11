@@ -23,6 +23,7 @@ Partial Class user
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -33,16 +34,13 @@ Partial Class user
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.USERNAME = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PASSWORD = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USERTYPE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FIRSTNAME = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LASTNAME = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -56,8 +54,22 @@ Partial Class user
         Me.Panel1.ForeColor = System.Drawing.Color.White
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(711, 64)
+        Me.Panel1.Size = New System.Drawing.Size(808, 64)
         Me.Panel1.TabIndex = 3
+        '
+        'Button5
+        '
+        Me.Button5.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button5.FlatAppearance.BorderSize = 0
+        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.ForeColor = System.Drawing.Color.Red
+        Me.Button5.Location = New System.Drawing.Point(746, 8)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(50, 50)
+        Me.Button5.TabIndex = 2
+        Me.Button5.Text = "X"
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -73,7 +85,7 @@ Partial Class user
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(22, 89)
+        Me.Label2.Location = New System.Drawing.Point(22, 267)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(111, 22)
         Me.Label2.TabIndex = 4
@@ -82,7 +94,7 @@ Partial Class user
         'TextBox1
         '
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(28, 117)
+        Me.TextBox1.Location = New System.Drawing.Point(18, 292)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(225, 35)
@@ -91,7 +103,7 @@ Partial Class user
         'TextBox2
         '
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(28, 183)
+        Me.TextBox2.Location = New System.Drawing.Point(18, 384)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(225, 35)
@@ -101,7 +113,7 @@ Partial Class user
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(23, 155)
+        Me.Label3.Location = New System.Drawing.Point(18, 348)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(115, 22)
         Me.Label3.TabIndex = 6
@@ -110,7 +122,7 @@ Partial Class user
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(24, 235)
+        Me.Label4.Location = New System.Drawing.Point(563, 89)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(100, 20)
         Me.Label4.TabIndex = 8
@@ -119,7 +131,8 @@ Partial Class user
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(28, 258)
+        Me.ComboBox1.Items.AddRange(New Object() {"All", "Admin", "Employee", "Supervisor", "Security"})
+        Me.ComboBox1.Location = New System.Drawing.Point(567, 121)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(225, 28)
         Me.ComboBox1.TabIndex = 9
@@ -127,7 +140,7 @@ Partial Class user
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(28, 292)
+        Me.Button1.Location = New System.Drawing.Point(0, 436)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(80, 35)
         Me.Button1.TabIndex = 10
@@ -137,7 +150,7 @@ Partial Class user
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(114, 292)
+        Me.Button2.Location = New System.Drawing.Point(86, 436)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(80, 35)
         Me.Button2.TabIndex = 11
@@ -147,48 +160,12 @@ Partial Class user
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.USERNAME, Me.PASSWORD, Me.USERTYPE, Me.FIRSTNAME, Me.LASTNAME})
         Me.DataGridView1.Location = New System.Drawing.Point(287, 158)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersWidth = 62
         Me.DataGridView1.RowTemplate.Height = 28
-        Me.DataGridView1.Size = New System.Drawing.Size(406, 260)
+        Me.DataGridView1.Size = New System.Drawing.Size(505, 313)
         Me.DataGridView1.TabIndex = 12
-        '
-        'USERNAME
-        '
-        Me.USERNAME.HeaderText = "USERNAME"
-        Me.USERNAME.MinimumWidth = 8
-        Me.USERNAME.Name = "USERNAME"
-        Me.USERNAME.Width = 150
-        '
-        'PASSWORD
-        '
-        Me.PASSWORD.HeaderText = "PASSWORD"
-        Me.PASSWORD.MinimumWidth = 8
-        Me.PASSWORD.Name = "PASSWORD"
-        Me.PASSWORD.Width = 150
-        '
-        'USERTYPE
-        '
-        Me.USERTYPE.HeaderText = "USERTYPE"
-        Me.USERTYPE.MinimumWidth = 8
-        Me.USERTYPE.Name = "USERTYPE"
-        Me.USERTYPE.Width = 150
-        '
-        'FIRSTNAME
-        '
-        Me.FIRSTNAME.HeaderText = "FIRSTNAME"
-        Me.FIRSTNAME.MinimumWidth = 8
-        Me.FIRSTNAME.Name = "FIRSTNAME"
-        Me.FIRSTNAME.Width = 150
-        '
-        'LASTNAME
-        '
-        Me.LASTNAME.HeaderText = "LASTNAME"
-        Me.LASTNAME.MinimumWidth = 8
-        Me.LASTNAME.Name = "LASTNAME"
-        Me.LASTNAME.Width = 150
         '
         'TextBox3
         '
@@ -196,7 +173,7 @@ Partial Class user
         Me.TextBox3.Location = New System.Drawing.Point(287, 117)
         Me.TextBox3.Multiline = True
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(225, 35)
+        Me.TextBox3.Size = New System.Drawing.Size(263, 35)
         Me.TextBox3.TabIndex = 14
         '
         'Label5
@@ -209,47 +186,64 @@ Partial Class user
         Me.Label5.TabIndex = 13
         Me.Label5.Text = "SEARCH"
         '
+        'TextBox4
+        '
+        Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox4.Location = New System.Drawing.Point(18, 210)
+        Me.TextBox4.Multiline = True
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(225, 35)
+        Me.TextBox4.TabIndex = 18
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(18, 171)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(95, 22)
+        Me.Label6.TabIndex = 17
+        Me.Label6.Text = "Fulll Name"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(22, 87)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(95, 22)
+        Me.Label7.TabIndex = 15
+        Me.Label7.Text = "POSITION"
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Items.AddRange(New Object() {"Admin", "Employee", "Supervisor", "Security"})
+        Me.ComboBox2.Location = New System.Drawing.Point(18, 124)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(225, 28)
+        Me.ComboBox2.TabIndex = 19
+        '
         'Button3
         '
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(613, 117)
+        Me.Button3.Location = New System.Drawing.Point(174, 436)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(80, 35)
-        Me.Button3.TabIndex = 16
-        Me.Button3.Text = "UPDATE"
+        Me.Button3.TabIndex = 20
+        Me.Button3.Text = "CLEAR"
         Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(527, 117)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(80, 35)
-        Me.Button4.TabIndex = 15
-        Me.Button4.Text = "INSERT"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Button5
-        '
-        Me.Button5.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button5.FlatAppearance.BorderSize = 0
-        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.ForeColor = System.Drawing.Color.Red
-        Me.Button5.Location = New System.Drawing.Point(658, 8)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(50, 50)
-        Me.Button5.TabIndex = 2
-        Me.Button5.Text = "X"
-        Me.Button5.UseVisualStyleBackColor = True
         '
         'user
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(711, 430)
+        Me.ClientSize = New System.Drawing.Size(808, 498)
         Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.ComboBox2)
+        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.DataGridView1)
@@ -286,12 +280,10 @@ Partial Class user
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents USERNAME As DataGridViewTextBoxColumn
-    Friend WithEvents PASSWORD As DataGridViewTextBoxColumn
-    Friend WithEvents USERTYPE As DataGridViewTextBoxColumn
-    Friend WithEvents FIRSTNAME As DataGridViewTextBoxColumn
-    Friend WithEvents LASTNAME As DataGridViewTextBoxColumn
     Friend WithEvents Button5 As Button
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents Button3 As Button
 End Class

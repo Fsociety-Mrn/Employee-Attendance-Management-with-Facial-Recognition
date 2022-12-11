@@ -13,8 +13,8 @@ from tkinter import messagebox
 
 face_detector=cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
-# url='http://192.168.254.198/640x480.jpg' # url ng hotspot mo rey
-url='http://192.168.100.61/800x600.jpg' # url ng wifi ko
+url='http://192.168.43.154/640x480.jpg' # url ng hotspot mo rey
+# url='http://192.168.100.61/800x600.jpg' # url ng wifi ko
 
 customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"

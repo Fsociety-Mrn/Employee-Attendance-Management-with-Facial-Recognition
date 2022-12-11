@@ -51,7 +51,6 @@ C:\Users\User-PC\Desktop\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.Form1.re
 C:\Users\User-PC\Desktop\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.Resources.resources
 C:\Users\User-PC\Desktop\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.vbproj.GenerateResource.cache
 C:\Users\User-PC\Desktop\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.vbproj.CoreCompileInputs.cache
-C:\Users\User-PC\Desktop\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.vbproj.CopyComplete
 C:\Users\User-PC\Desktop\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.exe
 C:\Users\User-PC\Desktop\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.xml
 C:\Users\User-PC\Desktop\cognate-I\Cognate1\Cognate1\obj\Debug\Cognate1.pdb

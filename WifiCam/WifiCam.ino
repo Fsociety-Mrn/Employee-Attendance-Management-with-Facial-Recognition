@@ -1,11 +1,11 @@
 #include "WifiCam.hpp"
 #include <WiFi.h>
 
-//static const char* WIFI_SSID = "ZARFIN";
-//static const char* WIFI_PASS = "knowtheeast";
+static const char* WIFI_SSID = "ZARFIN";
+static const char* WIFI_PASS = "knowtheeast";
 
-static const char* WIFI_SSID = "Disconnected...";
-static const char* WIFI_PASS = "SeanEli04!";
+//static const char* WIFI_SSID = "Disconnected...";
+//static const char* WIFI_PASS = "SeanEli04!";
 
 //static const char* WIFI_SSID = "TECHAID";
 //static const char* WIFI_PASS = "RBREEZY2021";

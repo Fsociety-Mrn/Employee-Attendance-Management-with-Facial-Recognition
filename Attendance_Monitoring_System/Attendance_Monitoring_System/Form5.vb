@@ -111,17 +111,17 @@ Public Class attendance
 
 
                 mysqlCommand.Connection = con
-                    mysqlCommand.CommandText = "SELECT * FROM `" + ComboBox1.Text + "` WHERE `Name` like '%" & TextBox1.Text & "%';"
-                    mysqlAdapter.SelectCommand = mysqlCommand
+                mysqlCommand.CommandText = "SELECT * FROM `" + ComboBox1.Text + "` WHERE `Name` like '%" & TextBox1.Text & "%';"
+                mysqlAdapter.SelectCommand = mysqlCommand
 
-                    mysqlAdapter.Fill(dataTable)
-                    bindingSource.DataSource = dataTable
-                    DataGridView1.DataSource = bindingSource
-                    mysqlAdapter.Update(dataTable)
+                mysqlAdapter.Fill(dataTable)
+                bindingSource.DataSource = dataTable
+                DataGridView1.DataSource = bindingSource
+                mysqlAdapter.Update(dataTable)
 
-                    con.Close()
+                con.Close()
 
-                End If
+            End If
 
 
         Catch ex As Exception
