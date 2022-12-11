@@ -10,11 +10,12 @@ import Database.database as DB # database
 import ArduinoCom.SerialCommunication as SC # Serial Communication
 import threading
 from tkinter import messagebox
+import time
 
 face_detector=cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
-url='http://192.168.43.154/640x480.jpg' # url ng hotspot mo rey
-# url='http://192.168.100.61/800x600.jpg' # url ng wifi ko
+# url='http://192.168.254.198/640x480.jpg' # url ng hotspot mo rey
+url='http://192.168.100.61/800x600.jpg' # url ng wifi ko
 
 customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
@@ -25,6 +26,8 @@ class TimeIn(customtkinter.CTk):
 
     def __init__(self):
         super().__init__()
+        
+        self.errors = 0
         
         self.title("Employee Face Recognition")
         self.resizable(False, False)
@@ -141,6 +144,7 @@ class TimeIn(customtkinter.CTk):
         
         if not facesCurFrame:
             SC.SerialWrite(0)
+            self.errors +=1
             messagebox.showerror('error', "I can't recognize you, may you please position your face properly on the camera")
             
         # compare images
@@ -167,6 +171,7 @@ class TimeIn(customtkinter.CTk):
             else:
                 # Serial write to true
                 SC.SerialWrite(0)
+                self.errors +=1
                 messagebox.showerror('error', "Im sorry but i dont recognize you")
                 break
 
@@ -213,12 +218,30 @@ class TimeIn(customtkinter.CTk):
             print(b)
             messagebox.showinfo('information', 'Please come back asap takecare!') if b == 1 else messagebox.showerror('error', 'please do register!')
         return self.serialRead()
+    
+    # ========================== errors
+    def errorstO(self):
+        print(str(self.errors))
+        if self.errors == 3:
+            messagebox.showwarning('warning', 'Please try again after 10 sec')
+            self.label.configure(text="Unable to capture camera please wait 10 seconds")
+            self.selfie.configure(state="disabled")
+            time.sleep(10)
+            self.label.configure(text="Please click the button to Time In")
+            self.selfie.configure(state="enable")
+            self.errors = 0
+        else:
+            self.label.configure(text="Please click the button to Time In")
+            self.selfie.configure(state="enable")
+            
+        return self.errorstO()   
 
 if __name__ == "__main__":
     app = TimeIn()
     
     threading.Thread(target=app.serialRead, args=()).start()
     threading.Thread(target=app.camera, args=()).start()
+    threading.Thread(target=app.errorstO, args=()).start()
     app.mainloop()
 
     
