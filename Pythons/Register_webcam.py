@@ -1,14 +1,6 @@
 import tkinter 
 import customtkinter
 
-import numpy as np
-import urllib.request
-
-url='http://192.168.43.154/1600x1200.jpg' # esp url
-
-
-
-
 from PIL import Image, ImageTk
 import cv2
 
@@ -66,12 +58,8 @@ def openWebCam():
     if check():
         
         def capture():
-            img_resp=urllib.request.urlopen(url)
-            imgnp=np.array(bytearray(img_resp.read()),dtype=np.uint8)
-            img=cv2.imdecode(imgnp,-1)
-        
+            ret, img = cap.read()
             frame = cv2.flip(img, 1)
-            
             name = str(LastName.get()) + "," + str(firstName.get()) + " " + str(middleInitial.get())
             img_name = "imgs/" + name + ".png"
             cv2.imwrite(img_name, frame)
@@ -107,17 +95,12 @@ def openWebCam():
     
     
         def camera():
-            img_resp=urllib.request.urlopen(url)
-            imgnp=np.array(bytearray(img_resp.read()),dtype=np.uint8)
-            img=cv2.imdecode(imgnp,-1)
-            
-            cv2image= cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+            ret, img = cap.read()
+            cv2image= cv2.cvtColor(cap.read()[1],cv2.COLOR_BGR2RGB)
         
             frame = cv2.flip(cv2image, 1)
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         
-          
-
         # Draw a rectangle around the faces
             faces = face_detector.detectMultiScale(gray, 
                                                scaleFactor=1.15,
