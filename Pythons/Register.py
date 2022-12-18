@@ -4,7 +4,7 @@ import customtkinter
 import numpy as np
 import urllib.request
 
-url='http://192.168.43.154/1600x1200.jpg' # esp url
+url='http://192.168.43.154/1024x768.jpg' # esp url
 
 import os
 import face_recognition
@@ -30,7 +30,7 @@ app = customtkinter.CTk()
 
 app.resizable(False, False)
         # =================== Center Form =================== #
-window_height = 580
+window_height = 600
 window_width = 400
 
 screen_width = app.winfo_screenwidth()
@@ -81,7 +81,7 @@ def openWebCam():
             img_resp=urllib.request.urlopen(url)
             imgnp=np.array(bytearray(img_resp.read()),dtype=np.uint8)
             img=cv2.imdecode(imgnp,-1)
-        
+            #img = cv2.resize(img,(0,0),None,0.50,0.50)
             frame = cv2.flip(img, 1)
             
             name = str(LastName.get()) + "," + str(firstName.get()) + " " + str(middleInitial.get())
@@ -117,7 +117,7 @@ def openWebCam():
         label.pack(side="top", fill="both", expand=True, padx=10, pady=10)
     
         button = customtkinter.CTkButton(master=photo, text="Capture", command=capture )
-        button.pack(side="top", padx=30, pady=30)
+        button.pack(side="top", padx=30, pady=20)
     
     
         def camera():

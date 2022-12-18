@@ -21,9 +21,9 @@ def button_callback():
         # pili kalang isa dito 
         # Register = esp
         # Regster_webcam = Webcam
-        import Register_webcam
-        # import Register
-        
+        # import Register_webcam
+        import Register
+
     else:
         messagebox.showerror("Attendance Face Recognition","We apologize for the inconvenience; please enter the correct username and password.")
 
