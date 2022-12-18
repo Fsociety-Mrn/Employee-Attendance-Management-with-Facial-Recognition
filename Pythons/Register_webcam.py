@@ -1,5 +1,7 @@
 import tkinter 
 import customtkinter
+import os
+import face_recognition
 
 from PIL import Image, ImageTk
 import cv2
@@ -57,11 +59,19 @@ def check():
 def openWebCam():
     if check():
         
-
-        
-        
         photo = customtkinter.CTkToplevel()
         photo.title("Capture Camera")
+
+        def checkFaces():
+            try:
+                name = str(LastName.get()) + "," + str(firstName.get()) + " " + str(middleInitial.get())
+                currImg = cv2.imread(f'{"imgs/" + name + ".png"}')
+                img = cv2.cvtColor(currImg, cv2.COLOR_BGR2RGB)
+                face_recognition.face_encodings(img)[0]
+                return True
+            except: 
+                os.remove("imgs/" + name + ".png")
+                return False
 
         def capture():
             ret, img = cap.read()
@@ -69,9 +79,10 @@ def openWebCam():
             name = str(LastName.get()) + "," + str(firstName.get()) + " " + str(middleInitial.get())
             img_name = "imgs/" + name + ".png"
             cv2.imwrite(img_name, frame)
-            photo.destroy()
-            messagebox.showinfo('information', 'capture complete')
             
+            photo.destroy()
+      
+            messagebox.showinfo('information', 'capture complete') if checkFaces() else messagebox.showerror('error', ' Please align your face properly to clearly recognize you!')
       
     
     #     window_height = 600

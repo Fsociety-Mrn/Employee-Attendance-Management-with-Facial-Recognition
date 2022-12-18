@@ -6,7 +6,8 @@ import urllib.request
 
 url='http://192.168.43.154/1600x1200.jpg' # esp url
 
-
+import os
+import face_recognition
 
 
 from PIL import Image, ImageTk
@@ -64,7 +65,18 @@ def check():
         
 def openWebCam():
     if check():
-        
+
+        def checkFaces():
+            try:
+                name = str(LastName.get()) + "," + str(firstName.get()) + " " + str(middleInitial.get())
+                currImg = cv2.imread(f'{"imgs/" + name + ".png"}')
+                img = cv2.cvtColor(currImg, cv2.COLOR_BGR2RGB)
+                face_recognition.face_encodings(img)[0]
+                return True
+            except: 
+                os.remove("imgs/" + name + ".png")
+                return False
+
         def capture():
             img_resp=urllib.request.urlopen(url)
             imgnp=np.array(bytearray(img_resp.read()),dtype=np.uint8)
@@ -75,10 +87,11 @@ def openWebCam():
             name = str(LastName.get()) + "," + str(firstName.get()) + " " + str(middleInitial.get())
             img_name = "imgs/" + name + ".png"
             cv2.imwrite(img_name, frame)
+
             photo.destroy()
-            messagebox.showinfo('information', 'capture complete')
-        
-        
+            
+            messagebox.showinfo('information', 'capture complete') if checkFaces() else messagebox.showerror('error', ' Please align your face properly to clearly recognize you!')
+      
         photo = customtkinter.CTkToplevel()
         photo.title("Capture Camera")
     
