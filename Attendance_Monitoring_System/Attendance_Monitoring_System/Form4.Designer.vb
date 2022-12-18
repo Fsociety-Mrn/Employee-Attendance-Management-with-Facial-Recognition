@@ -30,9 +30,9 @@ Partial Class Monitoring
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -124,16 +124,6 @@ Partial Class Monitoring
         Me.DateTimePicker1.Size = New System.Drawing.Size(280, 26)
         Me.DateTimePicker1.TabIndex = 7
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(221, 91)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(445, 25)
-        Me.Label3.TabIndex = 8
-        Me.Label3.Text = "wag mo idelete to pati datetimpeicker hahaha"
-        '
         'Button2
         '
         Me.Button2.BackColor = System.Drawing.Color.Maroon
@@ -157,6 +147,16 @@ Partial Class Monitoring
         Me.Button4.TabIndex = 10
         Me.Button4.Text = "Refresh"
         Me.Button4.UseVisualStyleBackColor = False
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(221, 91)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(445, 25)
+        Me.Label3.TabIndex = 8
+        Me.Label3.Text = "wag mo idelete to pati datetimpeicker hahaha"
         '
         'Monitoring
         '
@@ -191,7 +191,7 @@ Partial Class Monitoring
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Button3 As Button
     Friend WithEvents DateTimePicker1 As DateTimePicker
-    Friend WithEvents Label3 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents Button4 As Button
+    Friend WithEvents Label3 As Label
 End Class

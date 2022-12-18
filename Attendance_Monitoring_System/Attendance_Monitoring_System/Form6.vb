@@ -95,25 +95,29 @@ Public Class user
         Dim dataTable As New DataTable
 
         Try
-            openCon() ''connection 
 
-            mysqlCommand.Connection = con
-            mysqlCommand.CommandText = "SELECT * FROM `admin` WHERE `Full Name` like '%" & TextBox1.Text & "%';"
-            mysqlAdapter.SelectCommand = mysqlCommand
+            If TextBox3.Text = "" Then
+                DatatableDat()
+            Else
+                openCon() ''connection 
 
-            mysqlAdapter.Fill(dataTable)
-            bindingSource.DataSource = dataTable
-            DataGridView1.DataSource = bindingSource
-            mysqlAdapter.Update(dataTable)
+                mysqlCommand.Connection = con
+                mysqlCommand.CommandText = "SELECT * FROM `admin` WHERE `Full Name` like '%" & TextBox3.Text & "%';"
+                mysqlAdapter.SelectCommand = mysqlCommand
 
-            con.Close()
+                mysqlAdapter.Fill(dataTable)
+                bindingSource.DataSource = dataTable
+                DataGridView1.DataSource = bindingSource
+                mysqlAdapter.Update(dataTable)
 
+                con.Close()
+            End If
 
         Catch ex As Exception
 
             ''MessageBox.Show(ex.ToString)
             con.Close()
-            ''DatatableDat()
+            DatatableDat()
 
         End Try
     End Sub
@@ -210,4 +214,5 @@ Public Class user
         TextBox4.Text = ""
         TextBox1.Text = ""
         TextBox2.Text = ""
-    End Sub 
+    End Sub
+End Class
