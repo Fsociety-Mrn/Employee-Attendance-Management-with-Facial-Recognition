@@ -36,12 +36,12 @@ screen_width = app.winfo_screenwidth()
 screen_height = app.winfo_screenheight()
 
         # kapag sa screen ko
-x_cordinate = int((screen_width/2) - (window_width/2))
-y_cordinate = int((screen_height/3) - (window_height/3))
+# x_cordinate = int((screen_width/2) - (window_width/2))
+# y_cordinate = int((screen_height/3) - (window_height/3))
 
         # kapag sa screen ni rey
-        # x_cordinate = int((screen_width/4) - (window_width/4))
-        # y_cordinate = int((screen_height/8) - (window_height/8))
+x_cordinate = int((screen_width/3) - (window_width/3))
+y_cordinate = int((screen_height/8) - (window_height/8))
         
 app.geometry("{}x{}+{}+{}".format(window_width, window_height, x_cordinate, y_cordinate))
         
@@ -75,6 +75,7 @@ def openWebCam():
             name = str(LastName.get()) + "," + str(firstName.get()) + " " + str(middleInitial.get())
             img_name = "imgs/" + name + ".png"
             cv2.imwrite(img_name, frame)
+            photo.destroy()
             messagebox.showinfo('information', 'capture complete')
         
         

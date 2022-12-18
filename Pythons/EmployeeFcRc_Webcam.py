@@ -81,7 +81,8 @@ class TimeIn(customtkinter.CTk):
         # capture camera
         self.selfie = customtkinter.CTkButton(master=self.captureButton, 
                                    text="Capture camera",
-                                   command=self.captureCam)
+                                   command=self.captureCam,
+                                   )
         self.selfie.pack(pady=10, padx=10)
         self.selfie.place(relx=.5,rely=.6,anchor='center')
         
@@ -202,6 +203,7 @@ class TimeIn(customtkinter.CTk):
         encodeList = []
         for img in self.getImages():
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            print(img)
             encode = face_recognition.face_encodings(img)[0]
             encodeList.append(encode)
         return encodeList 

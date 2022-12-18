@@ -28,12 +28,12 @@ screen_width = app.winfo_screenwidth()
 screen_height = app.winfo_screenheight()
 
         # kapag sa screen ko
-x_cordinate = int((screen_width/2) - (window_width/2))
-y_cordinate = int((screen_height/3) - (window_height/3))
+# x_cordinate = int((screen_width/2) - (window_width/2))
+# y_cordinate = int((screen_height/2) - (window_height/2))
 
         # kapag sa screen ni rey
-        # x_cordinate = int((screen_width/4) - (window_width/4))
-        # y_cordinate = int((screen_height/8) - (window_height/8))
+x_cordinate = int((screen_width/3) - (window_width/3))
+y_cordinate = int((screen_height/8) - (window_height/8))
         
 app.geometry("{}x{}+{}+{}".format(window_width, window_height, x_cordinate, y_cordinate))
         
@@ -57,17 +57,22 @@ def check():
 def openWebCam():
     if check():
         
+
+        
+        
+        photo = customtkinter.CTkToplevel()
+        photo.title("Capture Camera")
+
         def capture():
             ret, img = cap.read()
             frame = cv2.flip(img, 1)
             name = str(LastName.get()) + "," + str(firstName.get()) + " " + str(middleInitial.get())
             img_name = "imgs/" + name + ".png"
             cv2.imwrite(img_name, frame)
+            photo.destroy()
             messagebox.showinfo('information', 'capture complete')
-        
-        
-        photo = customtkinter.CTkToplevel()
-        photo.title("Capture Camera")
+            
+      
     
     #     window_height = 600
     #     window_width = 700
@@ -86,6 +91,7 @@ def openWebCam():
         photo.geometry("{}x{}+{}+{}".format(window_width, window_height, x_cordinate, y_cordinate))
 
         photo.geometry("700x600")
+       
  
         label = customtkinter.CTkLabel(photo, text="Loading....")
         label.pack(side="top", fill="both", expand=True, padx=10, pady=10)
